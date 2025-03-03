@@ -1,7 +1,261 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elysian Shores - Luxury Resort</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        @import url("https://www.w3schools.com/w3css/4/w3.css");
+        :root {
+            --primary-color: #1e272e;
+            --secondary-color: #485460;
+            --text-color: #d2dae2;
+            --accent-color: #ff9f1a;
+            --container-bg: rgba(30, 39, 46, 0.3);
+            --section-bg: rgba(37, 43, 49, 0.7);
+            --blur-intensity: blur(8px);
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease-in-out;
+            --tint-color: rgba(0, 0, 0, 0.5); /* Slight tint for blurred background */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: url('https://camperguru.com/wp-content/uploads/2021/04/istra-premium-camping-valamar-2k.jpg') fixed center/cover;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: var(--blur-intensity);
+            margin-left: 2rem;
+			margin-right: 2rem;
+			margin-top: 12rem;
+			margin-bottom: 12rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            margin: 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem;
+            padding: 2rem;
+        }
+
+        .card {
+            background: var(--section-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            backdrop-filter: var(--blur-intensity);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(50px);
+            visibility: hidden;
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-section {
+            background: var(--container-bg);
+            margin: 2rem;
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            backdrop-filter: var(--blur-intensity);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(50px);
+            visibility: hidden;
+        }
+
+        .about-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        /* New Detailed Section */
+        .detailed-section {
+            background: var(--container-bg);
+            margin: 2rem;
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            backdrop-filter: var(--blur-intensity);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(50px);
+            visibility: hidden;
+            position: relative;
+        }
+
+        .detailed-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .detailed-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--tint-color);
+            z-index: -1; /* Ensures the tint is behind the content */
+            border-radius: var(--border-radius);
+        }
+
+        footer {
+            background: var(--container-bg);
+            backdrop-filter: var(--blur-intensity);
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+ /* Adding blur effect to the footer */
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background: #ffa502;
+            transform: translateY(-2px);
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            background: var(--container-bg);
+            color: white;
+            padding: 1.2rem;
+            text-align: center;
+            font-size: 1.5rem;
+			margin: 2rem;
+            border-radius: var(--border-radius);
+            backdrop-filter: var(--blur-intensity);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .container, .about-section, footer {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .btn { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Page.</p>
+    <div class="header w3-animate-top">
+        Elysian Shores - Paradise on Earth
+    </div>
+    
+    <div class="hero w3-animate-botto">
+        <h1>Where Luxury Meets Nature</h1>
+    </div>
+
+    <div class="about-section">
+        <h2>About Elysian Shores</h2>
+        <p>Nestled along the Gulf of Valencia, Elysian Shores redefines luxury with sustainable elegance. Our modern villas blend seamlessly with lush tropical landscapes, offering private infinity pools and panoramic ocean views. Indulge in world-class spa treatments, gourmet dining, and curated adventures - all while maintaining our commitment to environmental stewardship through solar energy and organic practices.</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Luxury Accommodations</h2>
+            <p>Private villas with infinity pools, smart home technology, and bespoke interior design.</p>
+            <a href="https://www.icegif.com/wp-content/uploads/2023/01/icegif-162.gif" class="btn">Explore Villas</a>
+        </div>
+        
+        <div class="card">
+            <h2>Wellness & Spa</h2>
+            <p>Holistic treatments using locally-sourced ingredients and ancient healing techniques.</p>
+            <a href="https://www.icegif.com/wp-content/uploads/2023/01/icegif-162.gif" class="btn">View Spa Menu</a>
+        </div>
+        
+        <div class="card">
+            <h2>Sustainable Luxury</h2>
+            <p>LEED-certified facilities with zero-waste initiatives and marine conservation programs.</p>
+            <a href="https://www.icegif.com/wp-content/uploads/2023/01/icegif-162.gif" class="btn">Our Initiatives</a>
+        </div>
+    </div>
+
+    <!-- New Detailed Section -->
+    <div class="detailed-section">
+        <h2>Experience Ultimate Tranquility</h2>
+        <p>Our luxurious retreats offer serene views and a perfect escape from the hustle and bustle of everyday life. Immerse yourself in nature while enjoying world-class amenities in a sustainable environment.</p>
+        <a href="#" class="btn">Discover More</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Elysian Shores. All Rights Reserved.</p>
+        <p>Sustainability • Luxury • Innovation</p>
+    </footer>
+
+    <script>
+        // Scroll animation for sections
+        const sections = document.querySelectorAll('.card, .about-section, .detailed-section');
+
+        function checkVisibility() {
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('load', checkVisibility);
+    </script>
 </body>
 </html>
